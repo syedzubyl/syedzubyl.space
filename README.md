@@ -47,26 +47,29 @@ To run this project locally, you only need:
 
 ## ☁️ Deployment
 
-This project is configured for **Cloudflare Pages** (Primary) and **Netlify** (Secondary fallback). Both platforms provide modern build environments (Ubuntu) with full GLIBC support for Zola 0.22.1.
+This project supports multiple deployment targets. **Vercel** is the primary deployment method using a custom build script that fetches the statically linked `musl` Zola binary to ensure compatibility. 
 
-### Primary: Cloudflare Pages
+### Primary: Vercel
 
-Cloudflare Pages is the recommended hosting platform as it provides first-class support for static sites, automatic custom domain/SSL configuration, and fast global CDN caching.
+1. Log in to Vercel and import this repository.
+2. The provided `vercel.json` and `vercel-build.sh` files will automatically handle the build process, including strict version verification and output validation.
+3. Once deployed, verify that `https://<project>.vercel.app` returns HTTP 200 and all assets (CSS, JS, Images, Fonts, Blog, Impossible List, CV, RSS, Sitemap, Search Index) work correctly.
 
+### Secondary: Cloudflare Pages
+
+Cloudflare Pages provides first-class support for static sites and native Ubuntu build environments.
 **To deploy:**
 1. Log in to [Cloudflare Pages](https://pages.cloudflare.com/).
-2. Click **Create a project** -> **Connect to Git**.
-3. Select this repository.
-4. Configure the build settings:
+2. Click **Create a project** -> **Connect to Git** and select this repository.
+3. Configure the build settings:
    - **Framework preset:** `None`
    - **Build command:** `zola build`
    - **Build output directory:** `public`
-5. Click **Save and Deploy**.
+4. Click **Save and Deploy**.
 
 ### Secondary: Netlify
 
 The repository includes a `netlify.toml` file pre-configured for Zola 0.22.1.
-
 **To deploy:**
 1. Log in to [Netlify](https://app.netlify.com/).
 2. Click **Add new site** -> **Import an existing project**.
