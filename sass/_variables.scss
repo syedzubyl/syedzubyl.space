@@ -1,0 +1,37 @@
+// Color System (Preserved)
+$background: #1b1b1b;
+$backgroundContent: #1f1f1f;
+$textColor: #e5e5e5;
+$linkColor: #037daf;
+$linkColorAlt: #00acff;
+$inlineCodeBlockBackground: #3b3d40;
+$cardColor: #303030;
+
+// Spacing System
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 64px;
+
+// Border Radius System
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+
+// Transitions System
+$transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// Breakpoints
+$bp-mobile: 600px;
+$bp-tablet: 900px;
+$bp-desktop: 1200px;
+
+// Layout
+$navbarHeight: 64px;
+$container-max-width: 1280px;
+$reading-width: 70ch;
+

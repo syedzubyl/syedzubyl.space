@@ -1,0 +1,100 @@
+# The URL the site will be built for
+base_url = "https://diogotc.com"
+
+# The site title and description; used in feeds by default.
+title = "Syed Zubyl N"
+description = "Hey, I'm Syed Zubyl N! Aspiring Software Engineer with a solid foundation in Java, Spring Boot, RESTful APIs, MySQL, and object-oriented programming."
+
+# The default language; used in feeds.
+default_language = "en"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+# The default author for pages
+author = "Syed Zubyl N"
+
+# The taxonomies to be rendered for the site and their configuration of the default languages
+taxonomies = [
+  {name = "tags", feed = true, paginate_by = 10},
+]
+
+# The filenames to use for the feeds. Used as the template filenames, too.
+feed_filenames = [
+  "atom.xml",
+  "rss.xml",
+]
+
+[markdown]
+# When set to "true", emoji aliases translated to their corresponding
+# Unicode emoji equivalent in the rendered Markdown files. (e.g.: :smile: => 😄)
+render_emoji = true
+
+# Whether external links are to be opened in a new tab
+# If this is true, a `rel="noopener"` will always automatically be added for security reasons
+external_links_target_blank = true
+
+# Whether to set rel="nofollow" for all external links
+external_links_no_follow = true
+
+# Whether to set rel="noreferrer" for all external links
+external_links_no_referrer = true
+
+# Whether smart punctuation is enabled (changing quotes, dashes, dots in their typographic form)
+# For example, `...` into `…`, `"quote"` into `“curly”` etc
+smart_punctuation = true
+
+[markdown.highlighting]
+theme = "github-dark"
+
+[extra]
+long_title = "Syed Zubyl N"
+favicon = "/assets/images/me.png"
+
+[extra.footer]
+source_code = "https://github.com/diogotcorreia/dtc-website"
+
+[[extra.footer.socials]]
+name = "mail"
+label = "Email"
+value = "me@diogotc.com"
+link = "mailto:me@diogotc.com"
+[[extra.footer.socials]]
+name = "discord"
+label = "Discord"
+value = "diogocorreia"
+link = "https://discord.com/users/218721510649626635"
+[[extra.footer.socials]]
+name = "matrix"
+label = "Matrix"
+value = "@dtc:diogotc.com"
+link = "https://matrix.to/#/@dtc:diogotc.com"
+[[extra.footer.socials]]
+name = "mastodon"
+label = "Mastodon"
+value = "@dtc@masto.pt"
+link = "https://masto.pt/@dtc"
+[[extra.footer.socials]]
+name = "gpg"
+label = "GPG Key"
+value = "0x12CF31FDFF172B77"
+link = "https://gpg.diogotc.com"
+
+[[extra.links]]
+name = "Home"
+path = "/"
+[[extra.links]]
+name = "Blog"
+path = "/blog"
+[[extra.links]]
+name = "Impossible List"
+path = "/impossiblelist"
+[[extra.links]]
+name = "CV"
+path = "/assets/Syed_Zubyl_N.pdf"
+
+[extra.authors."Syed Zubyl N"]
+fediverse = "@dtc@masto.pt"
