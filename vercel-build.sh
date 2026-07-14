@@ -19,7 +19,13 @@ if [[ "$ZOLA_VERSION" != *"zola 0.22.1"* ]]; then
 fi
 
 echo "Building site with Zola..."
-./zola build
+if [ -n "$VERCEL_URL" ]; then
+  echo "Vercel URL detected: $VERCEL_URL. Injecting dynamic base URL..."
+  ./zola build --base-url "https://$VERCEL_URL"
+else
+  echo "No Vercel URL detected. Using config.toml base_url..."
+  ./zola build
+fi
 
 echo "Verifying build output..."
 if [ ! -d "public" ]; then
