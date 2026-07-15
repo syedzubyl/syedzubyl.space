@@ -55,33 +55,13 @@ long_title = "Syed Zubyl N"
 favicon = "/assets/images/me.png"
 
 [extra.footer]
-source_code = "https://github.com/diogotcorreia/dtc-website"
+source_code = "https://github.com/syedzubyl/syedzubyl.space"
 
 [[extra.footer.socials]]
-name = "mail"
-label = "Email"
-value = "me@diogotc.com"
-link = "mailto:me@diogotc.com"
-[[extra.footer.socials]]
-name = "discord"
-label = "Discord"
-value = "diogocorreia"
-link = "https://discord.com/users/218721510649626635"
-[[extra.footer.socials]]
-name = "matrix"
-label = "Matrix"
-value = "@dtc:diogotc.com"
-link = "https://matrix.to/#/@dtc:diogotc.com"
-[[extra.footer.socials]]
-name = "mastodon"
-label = "Mastodon"
-value = "@dtc@masto.pt"
-link = "https://masto.pt/@dtc"
-[[extra.footer.socials]]
-name = "gpg"
-label = "GPG Key"
-value = "0x12CF31FDFF172B77"
-link = "https://gpg.diogotc.com"
+name = "github"
+label = "GitHub"
+value = "syedzubyl"
+link = "https://github.com/syedzubyl"
 
 [[extra.links]]
 name = "Home"

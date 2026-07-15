@@ -1,5 +1,29 @@
 {
   "buildCommand": "bash vercel-build.sh",
   "outputDirectory": "public",
-  "framework": null
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.syedzubyl.space"
+        }
+      ],
+      "destination": "https://syedzubyl.space/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "syedzubyl-space.vercel.app"
+        }
+      ],
+      "destination": "https://syedzubyl.space/$1",
+      "permanent": true
+    }
+  ]
 }

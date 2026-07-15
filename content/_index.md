@@ -19,48 +19,8 @@ Feel free to get in touch or take a look at my past work below.
 [[extra.socials]]
 name = "github"
 icon = "/assets/icons/github.svg"
-label = "diogotcorreia"
-link = "https://github.com/diogotcorreia"
-[[extra.socials]]
-name = "mastodon"
-icon = "/assets/icons/mastodon.svg"
-label = "@dtc@masto.pt"
-link = "https://masto.pt/@dtc"
-[[extra.socials]]
-name = "discord"
-icon = "/assets/icons/discord.svg"
-label = "diogocorreia"
-link = "https://discord.com/users/218721510649626635"
-[[extra.socials]]
-name = "matrix"
-icon = "/assets/icons/matrix.svg"
-label = "@dtc:diogotc.com"
-link = "https://matrix.to/#/@dtc:diogotc.com"
-[[extra.socials]]
-name = "strava"
-icon = "/assets/icons/strava.svg"
-label = "Diogo Correia"
-link = "https://www.strava.com/athletes/22762930"
-[[extra.socials]]
-name = "steam"
-icon = "/assets/icons/steam.svg"
-label = "rexcantor64"
-link = "https://steamcommunity.com/id/rexcantor64"
-[[extra.socials]]
-name = "instagram"
-icon = "/assets/icons/instagram.svg"
-label = "@diogotc2002"
-link = "https://www.instagram.com/diogotc2002/"
-[[extra.socials]]
-name = "mail"
-icon = "/assets/icons/mail.svg"
-label = "me@diogotc.com"
-link = "mailto:me@diogotc.com"
-[[extra.socials]]
-name = "mail"
-icon = "/assets/icons/gpg.svg"
-label = "GPG Key"
-link = "https://gpg.diogotc.com"
+label = "syedzubyl"
+link = "https://github.com/syedzubyl"
 
 ################
 # TOP PROJECTS #

@@ -19,11 +19,11 @@ if [[ "$ZOLA_VERSION" != *"zola 0.22.1"* ]]; then
 fi
 
 echo "Building site with Zola..."
-if [ -n "$VERCEL_URL" ]; then
-  echo "Vercel URL detected: $VERCEL_URL. Injecting dynamic base URL..."
+if [ "$VERCEL_ENV" = "preview" ] || [ "$VERCEL_ENV" = "development" ]; then
+  echo "Preview deployment detected ($VERCEL_URL). Injecting dynamic base URL..."
   ./zola build --base-url "https://$VERCEL_URL"
 else
-  echo "No Vercel URL detected. Using config.toml base_url..."
+  echo "Production deployment detected. Using config.toml base_url..."
   ./zola build
 fi
 

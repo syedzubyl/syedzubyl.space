@@ -25,7 +25,7 @@ To run this project locally, you only need:
    ```bash
    zola serve
    ```
-   *The server will start at `http://127.0.0.1:1111` and will live-reload automatically when you make changes to files.*
+   *The server will start at `http://127.0.0.1:1111` (local development only) and will live-reload automatically when you make changes to files.*
 
 3. **Build the site for production:**
    ```bash
