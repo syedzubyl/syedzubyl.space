@@ -127,7 +127,16 @@ body > header > nav {
     display: flex;
     align-items: center;
     gap: 1rem;
+    white-space: nowrap;
   }
+  
+  > div:last-child {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
   @media (max-width: ($bp-mobile - 1px)) {
     > div:last-child {
       display: none;

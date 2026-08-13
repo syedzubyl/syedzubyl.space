@@ -9,55 +9,155 @@
 {%- block stylesheets %}
 {{ super() }}
 <link rel="stylesheet" href="{{ get_url(path='/homepage.css', trailing_slash=false, cachebust=true) }}" />
+<style>
+.social-links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.social-link-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.2s;
+}
+.social-link-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.social-link-item svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+.production-apps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.production-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 12px;
+}
+.app-meta {
+  margin: 1rem 0;
+}
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  background: #333;
+  margin-right: 0.5rem;
+}
+.status-live { background: #02569B; }
+.links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.identity-statement {
+  background: rgba(255,255,255,0.05);
+  padding: 3rem 0;
+  margin: 4rem 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+</style>
 {%- endblock stylesheets %}
 
 {%- block content %}
 {%- set page_data = section.extra %}
 
-{# splash #}
-
+{# HERO #}
 {{- macros_particles::particles_dom(style="position: fixed; inset: 0; z-index: -10;") }}
 <div class="splash">
   {% set profile_picture = resize_image(path=page_data.profile_picture, width=150, height=150, op="fill", format="webp") %}
   <img class="profile-picture" src="{{ profile_picture.url }}" alt="Profile image of {{ page_data.name }}" />
   <h1>{{ page_data.name }}</h1>
-  <h2>{{ page_data.subtitle }}</h2>
-  <div class="socials">
-    {% for social in page_data.socials %}
-    <div class="has-tooltip">
-      <a href="{{ social.link | default(value='') }}" aria-label="{{ social.label }}" target="_blank" rel="noopener" data-umami-event="{{ social.name }}-social-hero">
-        {{ load_data(path=social.icon) | safe }}
-      </a>
-      <span class="tooltip" role="tooltip" tip-position="bottom">{{ social.label }}</span>
+  <h2>{{ page_data.subtitle | replace(from="\n", to="<br>") | safe }}</h2>
+</div>
+
+{# PROFILE / SOCIAL LINKS #}
+<div class="section" style="padding-top: 0;">
+  <div class="container text-center">
+    <div class="social-links-grid">
+      {% for social in page_data.socials %}
+        <a href="{{ social.link | default(value='') }}" aria-label="{{ social.label }}" target="_blank" rel="noopener" class="social-link-item">
+          {{ load_data(path=social.icon) | safe }}
+          <span style="font-weight: 500;">{{ social.label }}</span>
+        </a>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
 
-{# about me #}
-
+{# HEY! ABOUT ME #}
 <div class="section" id="about-me">
   <div class="container">
     {{ page_data.about_me | striptags | markdown(inline=false) | safe }}
   </div>
 </div>
 
-{# portfolio #}
+{# PERSONAL IDENTITY STATEMENT #}
+<div class="identity-statement">
+  <div class="container text-center">
+    <p style="font-size: 1.25rem; font-style: italic; font-weight: 300; margin: 0;">
+      "{{ page_data.personal_statement }}"
+    </p>
+  </div>
+</div>
 
+{# WHAT I WORK ON #}
+<div class="section-title">
+  <h2>What I Work On</h2>
+</div>
+<div class="section">
+  <div class="container" style="display: flex; gap: 2rem; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 2rem; border-radius: 8px;">
+      <h3 style="margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">Engineering</h3>
+      <ul style="line-height: 1.8;">
+        {% for item in page_data.what_i_work_on_engineering %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.02); padding: 2rem; border-radius: 8px;">
+      <h3 style="margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">Outside Code</h3>
+      <ul style="line-height: 1.8;">
+        {% for item in page_data.what_i_work_on_outside_code %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{# TOP PROJECTS #}
 <div class="section-title" id="portfolio">
-  <h2>Portfolio</h2>
+  <h2>Top Projects</h2>
 </div>
 
 <div class="section">
   <div class="container">
-    <h3>My top projects</h3>
-
     <div class="top-projects">
       {% for top_project in page_data.top_projects %}
         <div class="card" style="background-color: {{ top_project.background }}; color: {{ top_project.color }};">
           <div class="card-content">
             {%- if top_project.icon is matching("\.svg$") %}
-            <img src="{{ top_project.icon }}" alt="{{ top_project.name }}" loading="lazy" />
+            <div style="margin-bottom: 1rem; width: 48px; height: 48px; color: {{ top_project.color }}">
+              {{ load_data(path=top_project.icon) | safe }}
+            </div>
             {%- else %}
             {% set project_img = resize_image(path=top_project.icon, width=110, height=110, op="fill", format="webp") %}
             <img src="{{ project_img.url }}" alt="{{ top_project.name }}" loading="lazy" />
@@ -75,14 +175,57 @@
         </div>
       {% endfor %}
     </div>
+  </div>
+</div>
 
-    <h3>Timeline</h3>
+{# PRODUCTION APPLICATIONS #}
+<div class="section-title">
+  <h2>Production Applications</h2>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="production-apps">
+      {% for app in page_data.production_apps %}
+        <div class="card production-card">
+          <div class="card-content">
+            <h4>{{ app.name }}</h4>
+            <div class="app-meta">
+              <span class="badge">{{ app.platform }}</span>
+              <span class="badge status-{{ app.status | lower }}">{{ app.status }}</span>
+              <span class="badge">Version {{ app.version }}</span>
+            </div>
+            <p><strong>Technology:</strong> {{ app.technology }}</p>
+            <p><strong>Repository:</strong> {{ app.repository }}</p>
+            <div>
+              {{ app.release_notes | striptags | markdown(inline=false) | safe }}
+            </div>
+          </div>
+          {% if app.store_url %}
+          <div class="card-actions" style="margin-top: 1rem;">
+            <a href="{{ app.store_url }}" target="_blank" rel="noopener" class="button">
+              View on {{ app.platform }}
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 
+{# TIMELINE #}
+<div class="section-title">
+  <h2>Timeline</h2>
+</div>
+<div class="section">
+  <div class="container">
     <div class="timeline">
-      {% for entry in page_data.timeline | reverse %}
+      {% for entry in page_data.timeline %}
         <div class="timeline-element">
           <span class="timeline-element-icon" style="background-color: {{ entry.background }}; color: {{ entry.foreground }};">
-            {{ load_data(path=entry.icon) | safe }}
+            <div style="width: 24px; height: 24px;">
+              {{ load_data(path=entry.icon) | safe }}
+            </div>
           </span>
           <div class="timeline-element-content">
             <h4>{{ entry.title }}</h4>
@@ -92,10 +235,28 @@
             <div>
               {{ entry.content | striptags | markdown(inline=false) | safe }}
             </div>
+            {% if entry.date %}
             <span class="timeline-element-date">{{ entry.date }}</span>
+            {% endif %}
           </div>
         </div>
       {% endfor %}
+    </div>
+  </div>
+</div>
+
+{# OTHER SECTIONS PREVIEW #}
+<div class="section-title">
+  <h2>Explore More</h2>
+</div>
+<div class="section" style="padding-bottom: 4rem;">
+  <div class="container text-center">
+    <div class="links-grid" style="gap: 1.5rem;">
+       <a href="/blog" class="button button-outline" style="font-size: 1rem; padding: 1rem 2rem;">Engineering Blog</a>
+       <a href="/impossiblelist" class="button button-outline" style="font-size: 1rem; padding: 1rem 2rem;">Impossible List</a>
+       <a href="/startupideas" class="button button-outline" style="font-size: 1rem; padding: 1rem 2rem;">Startup Ideas</a>
+       <a href="/runningjourney" class="button button-outline" style="font-size: 1rem; padding: 1rem 2rem;">Running</a>
+       <a href="/drawingjourney" class="button button-outline" style="font-size: 1rem; padding: 1rem 2rem;">Drawing</a>
     </div>
   </div>
 </div>

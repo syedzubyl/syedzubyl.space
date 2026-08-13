@@ -1,0 +1,33 @@
+{%- extends "base.html" %}
+{%- import 'macros/particles.html' as macros_particles %}
+
+{%- block head %}
+{{ super() }}
+{{- macros_seo::seo(config=config, title=page.title) }}
+{%- endblock head %}
+
+{%- block stylesheets %}
+{{ super() }}
+<link rel="stylesheet" href="{{ get_url(path='/impossiblelist.css', trailing_slash=false, cachebust=true) }}" />
+{%- endblock stylesheets %}
+
+{%- block content %}
+
+{{- macros_particles::particles_dom(style="position: fixed; inset: 0; z-index: -10;") }}
+<div class="splash">
+  <h1>{{ page.title }}</h1>
+  <h2>{{ page.description }}</h2>
+</div>
+
+<div class="section">
+  <div class="container text-center">
+    {{ page.content | safe }}
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+{{- macros_particles::particles_script() }}
+{% endblock scripts %}

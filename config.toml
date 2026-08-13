@@ -2,8 +2,8 @@
 base_url = "https://syedzubyl.space"
 
 # The site title and description; used in feeds by default.
-title = "Syed Zubyl N"
-description = "Hey, I'm Syed Zubyl N! Aspiring Software Engineer with a solid foundation in Java, Spring Boot, RESTful APIs, MySQL, and object-oriented programming."
+title = "Syed Zubyl N | Software Developer"
+description = "Syed Zubyl N — Software Developer focused on Java, Spring Boot, backend development, REST APIs, databases, Flutter and production-oriented applications."
 
 # The default language; used in feeds.
 default_language = "en"
@@ -53,6 +53,8 @@ theme = "github-dark"
 [extra]
 long_title = "Syed Zubyl N"
 favicon = "/assets/images/me.png"
+contact_email = "syedzubyl@example.com"
+google_play_developer_url = "#"
 
 [extra.footer]
 source_code = "https://github.com/syedzubyl/syedzubyl.space"
@@ -62,6 +64,42 @@ name = "github"
 label = "GitHub"
 value = "syedzubyl"
 link = "https://github.com/syedzubyl"
+
+[[extra.footer.socials]]
+name = "linkedin"
+label = "LinkedIn"
+value = "syed-zubyl"
+link = "https://www.linkedin.com/in/syed-zubyl/"
+
+[[extra.footer.socials]]
+name = "discord"
+label = "Discord"
+value = "syedzubyl"
+link = "https://discord.com/users/syedzubyl"
+
+[[extra.footer.socials]]
+name = "whatsapp"
+label = "WhatsApp"
+value = "+91 73585 47421"
+link = "https://wa.me/917358547421"
+
+[[extra.footer.socials]]
+name = "strava"
+label = "Strava"
+value = "Syed Zubyl"
+link = "https://www.strava.com/athletes/206946130"
+
+[[extra.footer.socials]]
+name = "google-dev"
+label = "Google Developer"
+value = "Syed Zubyl"
+link = "https://me.developers.google.com/u/me"
+
+[[extra.footer.socials]]
+name = "google-play"
+label = "Google Play"
+value = "Developer"
+link = "#"
 
 [[extra.links]]
 name = "Home"
@@ -73,8 +111,11 @@ path = "/blog"
 name = "Impossible List"
 path = "/impossiblelist"
 [[extra.links]]
+name = "Startup Ideas"
+path = "/startupideas"
+[[extra.links]]
+name = "Running"
+path = "/runningjourney"
+[[extra.links]]
 name = "CV"
 path = "/assets/Syed_Zubyl_N.pdf"
-
-[extra.authors."Syed Zubyl N"]
-fediverse = "@dtc@masto.pt"

@@ -1,0 +1,61 @@
+{%- extends "base.html" %}
+{%- import 'macros/particles.html' as macros_particles %}
+
+{%- block head %}
+{{ super() }}
+{{- macros_seo::seo(config=config, title=page.title) }}
+{%- endblock head %}
+
+{%- block stylesheets %}
+{{ super() }}
+<link rel="stylesheet" href="{{ get_url(path='/impossiblelist.css', trailing_slash=false, cachebust=true) }}" />
+<style>
+.idea-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+.idea-meta {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+</style>
+{%- endblock stylesheets %}
+
+{%- block content %}
+
+{{- macros_particles::particles_dom(style="position: fixed; inset: 0; z-index: -10;") }}
+<div class="splash">
+  <h1>{{ page.title }}</h1>
+  <h2>{{ page.description }}</h2>
+</div>
+
+<div class="section">
+  <div class="container">
+    {{ page.content | safe }}
+    <div style="margin-top: 3rem;">
+      {%- for idea in page.extra.ideas %}
+      <div class="idea-card">
+        <h3>{{ idea.name }}</h3>
+        <div class="idea-meta">
+          <span style="background: #333; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem;">Stage: {{ idea.stage }}</span>
+        </div>
+        <p><strong>Problem:</strong> {{ idea.problem }}</p>
+        <p><strong>Target User:</strong> {{ idea.target_user }}</p>
+        <p><strong>Solution:</strong> {{ idea.proposed_solution }}</p>
+        <p><strong>Technology:</strong> {{ idea.technology }}</p>
+        <p><strong>Next Step:</strong> {{ idea.next_step }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+{{- macros_particles::particles_script() }}
+{% endblock scripts %}

@@ -23,21 +23,22 @@
       <div class="container footer-sections">
         <div class="footer-section">
           <h2>Contact me</h2>
-          <ul>
+          <div class="social-grid" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
             {% for social in config.extra.footer.socials %}
-              <li>
-                <span class="social-label">{{ social.label }}: </span>
-                <a
-                  href="{{ social.link }}"
-                  target="_blank"
-                  rel="me noopener"
-                  data-umami-event="{{ social.name }}-social-footer"
-                >
-                  {{ social.value }}
-                </a>
-              </li>
+              <a
+                href="{{ social.link }}"
+                target="_blank"
+                rel="me noopener"
+                aria-label="{{ social.label }}"
+                title="{{ social.label }}"
+                style="display: inline-block; width: 32px; height: 32px; color: inherit; transition: opacity 0.2s;"
+                onmouseover="this.style.opacity=0.7"
+                onmouseout="this.style.opacity=1"
+              >
+                {{ load_data(path="/assets/icons/" ~ social.name ~ ".svg") | safe }}
+              </a>
             {% endfor %}
-          </ul>
+          </div>
         </div>
         <div class="footer-section">
           <h2>Site map</h2>
@@ -55,7 +56,7 @@
       </div>
       <div class="copyright">
         <div class="container">
-          <p class="copyright-text">&copy; 2017-{{ now() | date(format="%Y") }} Diogo Torres Correia</p>
+          <p class="copyright-text">&copy; {{ now() | date(format="%Y") }} Syed Zubyl N | Software Developer</p>
           <p>
             <a
               href="{{ config.extra.footer.source_code }}"
@@ -71,13 +72,6 @@
     </footer>
     {%- block scripts %}
     {{- macros_navbar::navbar_script() }}
-    <script
-      async
-      defer
-      data-website-id="25c8aedf-a960-4b55-8c70-7bc4b2ad587b"
-      src="https://umami.diogotc.com/hellothere.js"
-      data-domains="diogotc.com,www.diogotc.com"
-    ></script>
     {%- endblock scripts %}
   </body>
 </html>

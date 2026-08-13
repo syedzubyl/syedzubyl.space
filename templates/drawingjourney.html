@@ -1,0 +1,62 @@
+{%- extends "base.html" %}
+{%- import 'macros/particles.html' as macros_particles %}
+
+{%- block head %}
+{{ super() }}
+{{- macros_seo::seo(config=config, title=page.title) }}
+{%- endblock head %}
+
+{%- block stylesheets %}
+{{ super() }}
+<link rel="stylesheet" href="{{ get_url(path='/impossiblelist.css', trailing_slash=false, cachebust=true) }}" />
+<style>
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.gallery-item {
+  background: rgba(255,255,255,0.05);
+  padding: 1rem;
+  border-radius: 8px;
+}
+.gallery-item img {
+  width: 100%;
+  border-radius: 4px;
+}
+</style>
+{%- endblock stylesheets %}
+
+{%- block content %}
+
+{{- macros_particles::particles_dom(style="position: fixed; inset: 0; z-index: -10;") }}
+<div class="splash">
+  <h1>{{ page.title }}</h1>
+  <h2>{{ page.description }}</h2>
+</div>
+
+<div class="section">
+  <div class="container text-center">
+    {{ page.content | safe }}
+    {% if page.extra.drawings %}
+    <div class="gallery">
+      {%- for drawing in page.extra.drawings %}
+      <div class="gallery-item">
+        <img src="{{ drawing.image }}" alt="{{ drawing.title }}" />
+        <h3>{{ drawing.title }}</h3>
+        <p>{{ drawing.medium }} • {{ drawing.date }}</p>
+        <p>{{ drawing.description }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+{{- macros_particles::particles_script() }}
+{% endblock scripts %}
